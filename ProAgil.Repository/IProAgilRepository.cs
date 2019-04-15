@@ -22,8 +22,8 @@ namespace ProAgil.Repository
 
         #region Palestrante
 
-        Task<Palestrante[]> GetAllPalestranteAsyncByName();
-        Task<Palestrante> GetPalestranteAsync(int PalestranteId);
+        Task<Palestrante[]> GetAllPalestranteAsyncByName(string name, bool IncludeEventos);
+        Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool IncludeEventos);
 
         #endregion
 
