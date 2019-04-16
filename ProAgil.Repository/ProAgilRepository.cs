@@ -49,7 +49,8 @@ namespace ProAgil.Repository
                     .ThenInclude(p => p.Palestrante);
             }
 
-            query = query.OrderByDescending(e => e.DataEvento);
+            query = query.AsNoTracking()
+                .OrderByDescending(e => e.DataEvento);
 
             return await query.ToArrayAsync();
         }
@@ -67,7 +68,8 @@ namespace ProAgil.Repository
                     .ThenInclude(p => p.Palestrante);
             }
 
-            query = query.OrderByDescending(e => e.DataEvento)
+            query = query.AsNoTracking()
+                .OrderByDescending(e => e.DataEvento)
                 .Where(e => e.Tema.ToLower().Contains(Tema.ToLower()));
 
             return await query.ToArrayAsync();
@@ -86,7 +88,8 @@ namespace ProAgil.Repository
                     .ThenInclude(p => p.Palestrante);
             }
 
-            query = query.OrderByDescending(e => e.DataEvento)
+            query = query.AsNoTracking()
+                .OrderByDescending(e => e.DataEvento)
                 .Where(e => e.Id == EventoId);
 
             return await query.FirstOrDefaultAsync();
@@ -108,7 +111,8 @@ namespace ProAgil.Repository
                     .ThenInclude(e => e.Evento);
             }
 
-            query = query.OrderBy(e => e.Nome)
+            query = query.AsNoTracking()
+                .OrderBy(e => e.Nome)
                 .Where(p => p.Nome.ToLower().Contains(name.ToLower()));
 
             return await query.ToArrayAsync();
@@ -126,7 +130,8 @@ namespace ProAgil.Repository
                     .ThenInclude(e => e.Evento);
             }
 
-            query = query.OrderBy(e => e.Nome)
+            query = query.AsNoTracking()
+                .OrderBy(e => e.Nome)
                 .Where(p => p.Id == PalestranteId);
 
             return await query.FirstOrDefaultAsync();
